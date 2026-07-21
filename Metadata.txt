@@ -1,0 +1,121 @@
+METADATA: ROOT TRAIT–ENVIRONMENT–INVASION (RTEI) FRAMEWORK
+
+Repository
+https://github.com/mmccar26/root_trait_environment_invasion
+
+Associated manuscript
+Campbell, A., Funk, J. L., Kuebbing, S., Nuñez, M. A., Nunez-Mir, G. C., and McCary, M. A. “From the ground up: Can root traits help predict invasion dynamics?” Ecology and Evolution.
+
+Repository description
+This repository contains the data and R code supporting the Root Trait–Environment–Invasion (RTEI) Framework and accompanying mini-review. The study evaluates how environmental resource availability and disturbance interact with root traits to shape patterns of plant invasion. The analysis uses a vote-count approach to summarize the number and direction of reported trait–invasion relationships across four environmental scenarios.
+
+
+REPOSITORY CONTENTS
+
+1. Data/RTEI_full_data_cleaned.csv
+
+Description:
+Cleaned data used in the vote-count analysis. Each row represents one root trait. The columns report the total number of paired studies and the number classified as showing positive, negative, or mixed results under each of four environmental scenarios.
+
+File format:
+Comma-separated values (CSV)
+
+Dimensions:
+10 root traits (rows) and 17 variables (columns)
+
+Root traits represented:
+- Nitrogen uptake
+- Root biomass
+- Root density
+- Root diameter
+- Root nitrogen
+- Root-to-shoot ratio
+- Specific root length
+- Root tissue density
+- Root surface area
+- Nitrogen use efficiency
+
+Environmental-scenario abbreviations:
+- HRLD: High resource availability and low disturbance
+- HRHD: High resource availability and high disturbance
+- LRLD: Low resource availability and low disturbance
+- LRHD: Low resource availability and high disturbance
+
+Variable naming convention:
+Variables combine a result category with an environmental-scenario abbreviation. For example, Positive_HRLD is the number of studies classified as showing a positive result under high resource availability and low disturbance.
+
+Variables:
+- Trait: Root trait evaluated in the reviewed studies; character.
+- Total_HRLD: Total number of paired studies for the trait under HRLD conditions; integer count.
+- Positive_HRLD: Number of HRLD studies classified as having a positive result; integer count.
+- Negative_HRLD: Number of HRLD studies classified as having a negative result; integer count.
+- Mixed_HRLD: Number of HRLD studies classified as having mixed results; integer count.
+- Total_HRHD: Total number of paired studies for the trait under HRHD conditions; integer count.
+- Positive_HRHD: Number of HRHD studies classified as having a positive result; integer count.
+- Negative_HRHD: Number of HRHD studies classified as having a negative result; integer count.
+- Mixed_HRHD: Number of HRHD studies classified as having mixed results; integer count.
+- Total_LRLD: Total number of paired studies for the trait under LRLD conditions; integer count.
+- Positive_LRLD: Number of LRLD studies classified as having a positive result; integer count.
+- Negative_LRLD: Number of LRLD studies classified as having a negative result; integer count.
+- Mixed_LRLD: Number of LRLD studies classified as having mixed results; integer count.
+- Total_LRHD: Total number of paired studies for the trait under LRHD conditions; integer count.
+- Positive_LRHD: Number of LRHD studies classified as having a positive result; integer count.
+- Negative_LRHD: Number of LRHD studies classified as having a negative result; integer count.
+- Mixed_LRHD: Number of LRHD studies classified as having mixed results; integer count.
+
+Data interpretation:
+For each trait and environmental scenario, the Positive, Negative, and Mixed columns partition the studies included in the corresponding Total column. The definitions and ecological interpretation of positive, negative, and mixed results follow the coding criteria described in the associated manuscript.
+
+Missing values:
+No missing values are present in the deposited CSV. A value of 0 indicates that no reviewed studies were assigned to that trait, environmental scenario, and result category; it is not a missing value.
+
+
+2. Scripts/RTEI_trait_data_FINAL.R
+
+Description:
+R script used to import and reshape the vote-count data and generate the four stacked horizontal bar plots presented in the manuscript. The four plots correspond to HRLD, HRHD, LRLD, and LRHD conditions. The script then combines these plots into a two-by-two multipanel figure labeled (a)–(d).
+
+Primary output object:
+- figure: Combined two-by-two plot containing the four environmental scenarios.
+
+Intermediate plot objects:
+- PlotHRLD: High-resource, low-disturbance panel.
+- PlotHRHD: High-resource, high-disturbance panel.
+- PlotLRLD: Low-resource, low-disturbance panel.
+- PlotLRHD: Low-resource, high-disturbance panel.
+
+Plot interpretation:
+For each root trait, the stacked bars show the number of paired studies classified as positive (red), mixed (gray), or negative (blue).
+
+Required R packages:
+- tidyverse
+- ggplot2
+- forcats
+- scales
+- ggpubr
+- vegan
+
+Note: Some packages are loaded separately even though they are included in, or overlap with, the tidyverse workflow.
+
+
+REPRODUCIBILITY INSTRUCTIONS
+
+1. Download or clone the complete repository while preserving its Data and Scripts subdirectories.
+2. Open Invasive_root_traits.Rproj in RStudio, or set the repository root as the R working directory.
+3. Install any required packages that are not already available.
+4. Open and run Scripts/RTEI_trait_data_FINAL.R.
+5. The combined multipanel figure will be stored in the R object named figure and displayed when the final line of the script is executed.
+
+SOFTWARE AND FILE FORMATS
+
+- Analysis environment: R
+- Project file: RStudio project (.Rproj)
+- Data format: CSV
+- Script format: R
+
+
+CONTACT
+
+Matthew A. McCary (corresponding author)
+Department of Biosciences, Rice University
+Houston, Texas, USA
